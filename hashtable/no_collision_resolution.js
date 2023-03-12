@@ -38,7 +38,8 @@ export class HashTable {
      * Take an arbitrary key and return a valid integer index between within the storage capacity of the hash table.
      */
     hash_index(key){
-        //your code here
+        return this.fnv1(key) % this.capacity
+        // return this.djb2(key) % this.capacity
     }
     
     /**
