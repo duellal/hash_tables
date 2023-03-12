@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "## No Collision Resolution",
   "main": "index.js",
+  "type": "commonjs",
   "dependencies": {
     "jest": "^29.5.0"
   },
