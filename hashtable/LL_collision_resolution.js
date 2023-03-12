@@ -22,7 +22,7 @@ export class HashTable {
      * Return the length of the list you're using to hold the hash able data. (Not the number of items stored in the hash table, but the number of slots in the main list.) One of the tests relies on this.
      */
     get_num_slots(){
-        //your code here
+        return this.capacity
     }
     
     /**
