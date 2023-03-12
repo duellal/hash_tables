@@ -9,7 +9,7 @@ class HashTableEntry{
 // Hash table can't have fewer than this many slots
 const MIN_CAPACITY = 8
 
-export class HashTable {
+class HashTable {
     /**
      * A hash table that with `capacity` buckets that accepts string keys
      */
@@ -90,38 +90,40 @@ export class HashTable {
     }
 }
 
-let ht = new HashTable(8)
-ht.put("line_1", "'Twas brillig, and the slithy toves")
-ht.put("line_2", "Did gyre and gimble in the wabe:")
-ht.put("line_3", "All mimsy were the borogoves,")
-ht.put("line_4", "And the mome raths outgrabe.")
-ht.put("line_5", '"Beware the Jabberwock, my son!')
-ht.put("line_6", "The jaws that bite, the claws that catch!")
-ht.put("line_7", "Beware the Jubjub bird, and shun")
-ht.put("line_8", 'The frumious Bandersnatch!"')
-ht.put("line_9", "He took his vorpal sword in hand;")
-ht.put("line_10", "Long time the manxome foe he sought--")
-ht.put("line_11", "So rested he by the Tumtum tree")
-ht.put("line_12", "And stood awhile in thought.")
+module.exports = {HashTable}
 
-console.log('')
+// let ht = new HashTable(8)
+// ht.put("line_1", "'Twas brillig, and the slithy toves")
+// ht.put("line_2", "Did gyre and gimble in the wabe:")
+// ht.put("line_3", "All mimsy were the borogoves,")
+// ht.put("line_4", "And the mome raths outgrabe.")
+// ht.put("line_5", '"Beware the Jabberwock, my son!')
+// ht.put("line_6", "The jaws that bite, the claws that catch!")
+// ht.put("line_7", "Beware the Jubjub bird, and shun")
+// ht.put("line_8", 'The frumious Bandersnatch!"')
+// ht.put("line_9", "He took his vorpal sword in hand;")
+// ht.put("line_10", "Long time the manxome foe he sought--")
+// ht.put("line_11", "So rested he by the Tumtum tree")
+// ht.put("line_12", "And stood awhile in thought.")
 
-//Test storing beyond capacity
-for(let i = 0; i < 13; i++){
-    console.log(ht.get(`line_${i}`))
-}
+// console.log('')
 
-//Test resizing 
-let old_cap = ht.get_num_slots();
-ht.resize(ht.capacity * 2);
-let new_cap = ht.get_num_slots();
+// //Test storing beyond capacity
+// for(let i = 0; i < 13; i++){
+//     console.log(ht.get(`line_${i}`))
+// }
 
-console.log(`Resized from ${old_cap} to ${new_cap}`)
+// //Test resizing 
+// let old_cap = ht.get_num_slots();
+// ht.resize(ht.capacity * 2);
+// let new_cap = ht.get_num_slots();
 
-//Test if data intact after resizing
-for(let i = 0; i < 13; i++){
-    console.log(ht.get(`line_${i}`))
-}
+// console.log(`Resized from ${old_cap} to ${new_cap}`)
 
-console.log('')
+// //Test if data intact after resizing
+// for(let i = 0; i < 13; i++){
+//     console.log(ht.get(`line_${i}`))
+// }
+
+// console.log('')
 

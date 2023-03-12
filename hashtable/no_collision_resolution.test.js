@@ -1,4 +1,4 @@
-import { HashTable } from "./no_collision_resolution";
+const {HashTable} = require("./no_collision_resolution");
 
 describe('Test HashTable', ()=>{
     let ht; 
