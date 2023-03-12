@@ -17,6 +17,22 @@ export class HashTable {
     constructor(capacity){
         //your code here
     }
+    
+    /**
+     * NV-1 Hash, 64-bit
+     * Implement this, and/or DJB2.
+     */
+    fnv1(key){
+        //your code here
+    }
+    
+    /**
+     * DJB2 hash, 32-bit
+     * Implement this, and/or DJB2.
+     */
+    djb2(key){
+        //your code here
+    }
 
     /**
      * Take an arbitrary key and return a valid integer index between within the storage capacity of the hash table.
