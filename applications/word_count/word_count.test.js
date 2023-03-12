@@ -1,4 +1,4 @@
-import { word_count } from "./word_count";
+const {word_count} = require('./word_count')
 
 describe('word_count', ()=>{
     it('[1] returns an empty dictionary when no words are given', ()=>{
