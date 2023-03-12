@@ -1,0 +1,24 @@
+{
+  "name": "hash_tables",
+  "version": "1.0.0",
+  "description": "## No Collision Resolution",
+  "main": "index.js",
+  "dependencies": {
+    "jest": "^29.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jduell12/hash_tables.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jduell12/hash_tables/issues"
+  },
+  "homepage": "https://github.com/jduell12/hash_tables#readme"
+}
