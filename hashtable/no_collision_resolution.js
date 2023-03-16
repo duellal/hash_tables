@@ -18,7 +18,7 @@ class HashTable {
          if(capacity >= MIN_CAPACITY){
             this.capacity = capacity
          } else{
-            this.capacity = 8
+            this.capacity = MIN_CAPACITY
          }
 
         this.table = new Array(this.capacity)
