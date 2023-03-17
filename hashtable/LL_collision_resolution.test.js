@@ -62,7 +62,7 @@ describe('Test HashTable', ()=>{
     
     it('[4] resizes correctly', ()=>{
         ht.resize(1024)
-        expect(ht.get_num_slots).toEqual(1024)
+        expect(ht.get_num_slots()).toEqual(1024)
         
         table_keys.forEach(key => {
             return_value = ht.get(key)

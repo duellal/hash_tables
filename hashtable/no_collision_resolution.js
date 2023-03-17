@@ -23,11 +23,11 @@ class HashTable {
 
         this.table = new Array(this.capacity)
         
-        for(let i = 0; i < this.table.length; i++){
-            if(this.table[i]){
-                return this.table[i]
-            }
-        }
+        // for(let i = 0; i < this.table.length; i++){
+        //     if(this.table[i]){
+        //         return this.table[i]
+        //     }
+        // }
     }
     
     get_num_slots(){
@@ -72,7 +72,6 @@ class HashTable {
     // Also "set"
     put(key, value){
         const index = this.hash_index(key)
-
         this.table[index] = value
     }
     
@@ -82,8 +81,11 @@ class HashTable {
      * Print a warning if the key is not found.
      */
     delete(key){
-        const index = this.hash_index(key)
+        if(!key){
+            console.log(`Key ${key} is not found`)
+        }
 
+        const index = this.hash_index(key)
         this.table[index] = null
     }
     
@@ -93,8 +95,11 @@ class HashTable {
      *  Returns null if the key is not found.
      */
     get(key){
-        const index = this.hash_index(key)
+        if(!key){
+            return null
+        }
 
+        const index = this.hash_index(key)
         return this.table[index]
     }
     
@@ -119,21 +124,21 @@ class HashTable {
 
 module.exports = {HashTable}
 
-let ht = new HashTable(8) 
-ht.put("line_1", "'Twas brillig, and the slithy toves")
-ht.put("line_2", "Did gyre and gimble in the wabe:")
-ht.put("line_3", "All mimsy were the borogoves,")
-ht.put("line_4", "And the mome raths outgrabe.")
-ht.put("line_5", '"Beware the Jabberwock, my son!')
-ht.put("line_6", "The jaws that bite, the claws that catch!")
-ht.put("line_7", "Beware the Jubjub bird, and shun")
-ht.put("line_8", 'The frumious Bandersnatch!"')
-ht.put("line_9", "He took his vorpal sword in hand;")
-ht.put("line_10", "Long time the manxome foe he sought--")
-ht.put("line_11", "So rested he by the Tumtum tree")
-ht.put("line_12", "And stood awhile in thought.")
+// let ht = new HashTable(8) 
+// ht.put("line_1", "'Twas brillig, and the slithy toves")
+// ht.put("line_2", "Did gyre and gimble in the wabe:")
+// ht.put("line_3", "All mimsy were the borogoves,")
+// ht.put("line_4", "And the mome raths outgrabe.")
+// ht.put("line_5", '"Beware the Jabberwock, my son!')
+// ht.put("line_6", "The jaws that bite, the claws that catch!")
+// ht.put("line_7", "Beware the Jubjub bird, and shun")
+// ht.put("line_8", 'The frumious Bandersnatch!"')
+// ht.put("line_9", "He took his vorpal sword in hand;")
+// ht.put("line_10", "Long time the manxome foe he sought--")
+// ht.put("line_11", "So rested he by the Tumtum tree")
+// ht.put("line_12", "And stood awhile in thought.")
 
-// console.log('Hash Table:', ht)
+// console.log('Hash Table No Collision:', ht)
 
 // //Test storing beyond capacity
 // for(let i = 0; i < 13; i++){
