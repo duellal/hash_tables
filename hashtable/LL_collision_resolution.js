@@ -15,7 +15,14 @@ class HashTable {
      */
     
     constructor(capacity){
-        //your code here
+        if(capacity >= MIN_CAPACITY){
+            this.capacity = capacity
+        } else{
+            this.capacity = MIN_CAPACITY
+        }
+
+        this.table = new Array(this.capacity)
+        this.items = 0
     }
     
     /**
@@ -29,7 +36,7 @@ class HashTable {
      * Return the load factor for this hash table.
      */
     get_load_factor(){
-        //your code here
+        return this.items / this.capacity
     }
     
     /**
@@ -43,7 +50,13 @@ class HashTable {
      * DJB2 Hash, 32-bit
      */
     djb2(key){
-        //your code here
+        let total = 0
+
+        for(let i = 0; i < key.length; i++){
+            total += key.charCodeAt(i)
+        }
+
+        return total
     }
     
     /**
@@ -60,7 +73,21 @@ class HashTable {
      * Hash collisions should be handled with Linked List Chaining.
      */
     put(key, value){
-        //your code here
+        const index = this.hash_index(key)
+        let bucket = this.table[index]
+
+        if(!bucket){
+            this.table[index] = [[key, value]]
+            this.items += 1
+        } else {
+            
+            if(bucket[0][0] === key){
+                bucket[0][1] = value
+            } else{
+                bucket.push([key, value])
+                this.items += 1
+            }
+        }
     }
     
     /**
@@ -69,7 +96,16 @@ class HashTable {
      * Print a warning if the key is not found.
      */
     delete(key){
-        //your code here
+        if(!key){
+            console.log(`Key ${key} is not found`)
+        }
+
+        const index = this.hash_index(key)
+
+        if(this.table[index]){
+            this.table[index].splice(this.table[index].indexOf(key), 1)
+        }
+        return null
     }
     
     /**
@@ -78,7 +114,24 @@ class HashTable {
      *  Returns null if the key is not found.
      */
     get(key){
-        //your code here
+        const index = this.hash_index(key)
+        let bucket = this.table[index]
+
+        if(bucket.length === 1){
+            return bucket[0][1]
+        } 
+        else if(bucket.length > 1){
+            let sameKeyItem = bucket.filter(item => {
+                return item[0] === key
+            })
+
+            if(sameKeyItem){
+                return sameKeyItem[0][1]
+            } else{
+                return null
+            }
+        }
+        return null
     }
     
     /**
@@ -86,13 +139,22 @@ class HashTable {
      * Changes the capacity of the hash table and rehashes all key/value pairs
      */
     resize(new_capacity){
-        //your code here
+        let old_table = this.table 
+
+        this.capacity = new_capacity
+        this.table = new Array(this.capacity)
+        
+        for(let i = 0; i < old_table.length; i++){
+            if(old_table[i]){
+                this.table[i] = old_table[i]
+            }
+        }
     }
 }
 
 module.exports = {HashTable}
 
-// let ht = new HashTable(8)
+// let ht = new HashTable(8) 
 // ht.put("line_1", "'Twas brillig, and the slithy toves")
 // ht.put("line_2", "Did gyre and gimble in the wabe:")
 // ht.put("line_3", "All mimsy were the borogoves,")
@@ -106,7 +168,8 @@ module.exports = {HashTable}
 // ht.put("line_11", "So rested he by the Tumtum tree")
 // ht.put("line_12", "And stood awhile in thought.")
 
-// console.log('')
+// console.log('Hash Table:', ht)
+// console.log(`Hash Table Get:`, ht.get("line_1"))
 
 // //Test storing beyond capacity
 // for(let i = 0; i < 13; i++){
@@ -119,6 +182,7 @@ module.exports = {HashTable}
 // let new_cap = ht.get_num_slots();
 
 // console.log(`Resized from ${old_cap} to ${new_cap}`)
+// console.log(`New Hash Table:`, ht)
 
 // //Test if data intact after resizing
 // for(let i = 0; i < 13; i++){
@@ -126,4 +190,3 @@ module.exports = {HashTable}
 // }
 
 // console.log('')
-
